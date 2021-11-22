@@ -1,12 +1,5 @@
 <template>
   <div class="list-page">
-    <n-alert title="感谢@shabitt" type="info" closable>
-      <n-space>
-        <a href="https://t.me/shabitt" target="_blank">作者</a>
-        <a href="https://shimily.notion.site/shimily/f90e8e28b55e423185f44c89c53c573c?v=b69a268a91c946ce9238f947100070a4"  target="_blank">地址</a>
-      </n-space>
-    </n-alert>
-    <br />
     <n-alert title="请先设置默认上传目录" type="error" v-if="!uploadFolder || !uploadFolder.id">
       请先在文件列表操作选择设置默认
     </n-alert>

@@ -54,7 +54,7 @@ const loginPost = () => {
   if(!loginData.value.password || !loginData.value.username) {
     return false
   }
-  loading.value = true
+  loading.value = true;
   http.post('https://user.mypikpak.com/v1/auth/signin', {
     "captcha_token": "",
     "client_id": "YNxT9w7GMdWvEOKa",
