@@ -7,6 +7,12 @@
 ## Demo
  * [PikPak](https://mumuchenchen.github.io/pikpak/)
 
+
+## 插件文档
+
+* [v-contextmenu](https://github.com/heynext/v-contextmenu/blob/main/docs/usage.md)
+
+* [naiveui](https://www.naiveui.com/zh-CN/os-theme/components/button)
 ## 安装部署
 
  * [网页版使用教程](https://www.tjsky.net/?p=220)

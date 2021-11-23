@@ -27,6 +27,9 @@ app.directive('resize', {
 })
 app.config.globalProperties.$http = http
 app.use(router)
+import contextmenu from "v-contextmenu";
+import "v-contextmenu/dist/themes/default.css";
+app.use(contextmenu);
 app.use(cnzzAnalytics, {
   router: router,
   siteIdList: [

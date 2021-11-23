@@ -14,6 +14,8 @@
     "plyr": "^3.6.9",
     "qs": "^6.10.1",
     "streamsaver": "^2.0.5",
+    "v-contextmenu": "^3.0.0",
+    "v-directive-contextmenu": "^1.0.7",
     "vue": "^3.2.16",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.12"
