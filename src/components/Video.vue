@@ -1,11 +1,13 @@
 <template>
   <video id="player" class="video-js" ></video>
+  
 </template>
 <script setup lang="ts">
 import { ref } from '@vue/reactivity'
 import { onMounted, onUnmounted } from '@vue/runtime-core';
 import { VideoJsPlayer } from "video.js";
 import videojs from "video.js/dist/alt/video.core.novtt.js";
+
 // Video.js css
 import "video.js/dist/video-js.min.css";
   

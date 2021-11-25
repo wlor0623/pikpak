@@ -1,42 +1,71 @@
 <template>
-  <video ref="playerRef" :data-poster="videoInfo.thumbnail_link" v-if="videoInfo.mime_type.indexOf('video') !== -1">
-    <template v-for="(item, key) in videoInfo.medias">
-      <source :src="item?.link.url" :type="videoInfo.mime_type === 'video/x-matroska' ? 'video/webm' :videoInfo.mime_type" :size="list[item.resolution_name]" />
-    </template>
-  </video>
-  <audio ref="playerRef" v-else-if="videoInfo.mime_type.indexOf('audio') !== -1">
-      <source :src="videoInfo.web_content_link"  />
-  </audio>
+  <div id="playerView"></div>
+
 </template>
 <script setup lang="ts">
-import { computed, ref } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
-import Plyr from 'plyr'
-import 'plyr/dist/plyr.css'
-  const props = defineProps<{
-    video: {
-      [key:string]:any
-    }
-  }>()
-  const videoInfo = computed(() => {
-    return props.video
-  })
-  const list:{
-    [key:string]:number
-  } = {
-    '4K': 2160,
-    '1080P': 1080,
-    '720P': 720,
-    '480P': 480
+import { ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
+
+const props = defineProps<{
+  video: {
+    [key: string]: any;
+  };
+}>();
+
+const playerRef = ref();
+const player = ref();
+const initPlayer = () => {
+  if (props.video.mime_type.indexOf("video") >= 0) {
+    let player = new Player({
+      id: "playerView",
+      url: props.video.web_content_link,
+      fluid: true,
+      lang: "zh-cn",
+      autoplay: false,
+      videoInit: true,
+      poster: props.video.thumbnail_link,
+      playbackRate: [0.5, 0.75, 1, 1.5, 2],
+      defaultPlaybackRate: 1,
+      rotateFullscreen: true,
+      download: true,
+      pip: true,
+      screenShot: {
+        saveImg: true,
+        quality: 1,
+        type: "image/png",
+        format: ".png",
+      },
+      keyShortcut: "on",
+      keyShortcutStep: {
+        //设置调整步长
+        currentTime: 15, //播放进度调整步长，默认10秒
+        volume: 0.2, //音量调整步长，默认0.1
+      },
+    });
+  } else {
+    let player = new Music({
+      id: "playerView",
+      url: [
+        {
+          src: props.video.web_content_link,
+          name: "song01",
+          vid: "000001",
+        },
+      ],
+      volume: 0.8,
+      width: 900,
+      height: 50,
+      preloadNext: true,
+      switchKeepProgress: false,
+      abCycle: {
+        start: 3,
+        end: 9,
+        loop: true,
+      },
+    });
   }
-  const playerRef = ref()
-  const player = ref()
-  const initPlayer = () => {
-    player.value = new Plyr(playerRef.value, {
-      debug: true
-    })
-  }
-  onMounted(initPlayer)
+};
+onMounted(initPlayer);
 </script>
 
 <style>
@@ -56,5 +85,4 @@ import 'plyr/dist/plyr.css'
   width: 100%;
   height: 100%;
 }
-
 </style>

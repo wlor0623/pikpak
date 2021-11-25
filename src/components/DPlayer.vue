@@ -1,5 +1,6 @@
 <template>
-  <div ref="dplayerRef"></div>
+  
+  <div  ref="dplayerRef"></div>
 </template>
 <script setup lang="ts">
 import { ref } from '@vue/reactivity';

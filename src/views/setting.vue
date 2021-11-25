@@ -5,7 +5,7 @@
         <n-input v-model:value="telegramUrl" placeholder="复制telegram绑定链接到这"></n-input>
         <p></p>
         <n-button :disabled="!telegramUrl" type="primary" @click="goTelegram">Telegram绑定</n-button>
-        <a href="https://t.me/PikPak_Bot" target="_blank">Telegram机器人地址</a>
+        <a href="https://t.me/PikPak_Bot" target="_blank">Telegram机器人</a>
       </n-collapse-item>
       <n-collapse-item name="0" title="aria2设置">
         <n-form label-width="100px" label-align="left" label-placement="left">
