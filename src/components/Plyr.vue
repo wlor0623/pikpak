@@ -12,7 +12,6 @@ const props = defineProps<{
   };
 }>();
 
-const playerRef = ref();
 const player = ref();
 const initPlayer = () => {
   if (props.video.mime_type.indexOf("video") >= 0) {

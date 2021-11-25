@@ -1,5 +1,4 @@
 <template>
-  
   <div  ref="dplayerRef"></div>
 </template>
 <script setup lang="ts">

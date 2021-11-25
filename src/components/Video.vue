@@ -1,6 +1,5 @@
 <template>
   <video id="player" class="video-js" ></video>
-  
 </template>
 <script setup lang="ts">
 import { ref } from '@vue/reactivity'
