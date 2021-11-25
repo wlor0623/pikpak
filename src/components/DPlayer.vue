@@ -20,7 +20,8 @@ import DPlayer from 'dplayer'
         pic: '',
         url: ''
       },
-    })
+    });
+    
   }
   onMounted(initPlayer)
   onUnmounted(() => {
