@@ -6,6 +6,20 @@ import elementResizeDetectorMaker from 'element-resize-detector'
 import cnzzAnalytics from 'vue-cnzz-analytics'
 
 const app = createApp(App)
+
+
+// import {
+//   create,
+//   NButton,
+//   DataTableColumns, NDataTable, NText, NTime, NAlert, NSpace, NScrollbar, NSpin ,
+//   NPageHeader
+// } from 'naive-ui'
+
+// const naive = create({
+//   components: [NButton,
+//     DataTableColumns, NDataTable, NText, NTime, NAlert, NSpace, NScrollbar, NSpin ,NPageHeader]
+// })
+// app.use(naive)
 app.directive('resize', {
   mounted(el, binding, vnode) {
     el.$$erd = elementResizeDetectorMaker({

@@ -23,9 +23,12 @@
           <!-- <n-button @click="showUserMenu = true">
             添加自定义菜单
           </n-button> -->
-          <n-icon :color="themeVars.primaryColor" @click="showAddUrl = true">
+          <button class="upload-button" @click="showAddUrl = true">
+            <i class="iconfont icon-jiahao"></i>
+          </button>
+          <!-- <n-icon :color="themeVars.primaryColor" @click="showAddUrl = true">
             <circle-plus></circle-plus>
-          </n-icon>
+          </n-icon> -->
         </n-space>
       </div>
     </div>
@@ -110,20 +113,7 @@
         </template>
       </n-card>
     </n-modal>
-    <!-- 视频预览 -->
-    <n-modal v-model:show="showVideo">
-      <n-card style="width: 100vw; height: 100vh;" :title="fileInfo ? fileInfo.name : '视频'">
-        <template #header-extra>
-          <n-icon @click="showVideo = false">
-            <circle-x></circle-x>
-          </n-icon>
-        </template>
-        <div style="width: 100%; height: 100%">
-          <!-- <Video :src="fileInfo.web_content_link" :type="fileInfo.mime_type"></Video> -->
-          <plyr-vue :video="fileInfo"></plyr-vue>
-        </div>
-      </n-card>
-    </n-modal>
+   
     <!-- 图片预览 -->
     <n-modal v-model:show="showImage">
       <n-card style="width: 100vw; height: 100vh;" :title="fileInfo ? fileInfo.name : '图片'">
@@ -263,7 +253,7 @@ import {
   LetterA,
 } from "@vicons/tabler";
 import { byteConvert } from "../utils";
-import PlyrVue from "../components/Plyr.vue";
+
 import TaskVue from "../components/Task.vue";
 import ClipboardJS from "clipboard";
 import streamSaver from "streamsaver";
@@ -326,19 +316,8 @@ const columns = ref<DataTableColumns>([
               row.mime_type.indexOf("image") != -1 ||
               row.mime_type.indexOf("audio") != -1
             ) {
-              getFile(row.id).then((res) => {
-                fileInfo.value = res.data;
-                if (fileInfo.value.web_content_link) {
-                  if (
-                    row.mime_type.indexOf("video") != -1 ||
-                    row.mime_type.indexOf("audio") != -1
-                  ) {
-                    showVideo.value = true;
-                  } else {
-                    showImage.value = true;
-                  }
-                }
-              });
+              router.push("/play/" + row.id);
+            
             }
           },
         },
@@ -678,7 +657,6 @@ const getFile = (id: string) => {
       return res;
     });
 };
-const showVideo = ref(false);
 const showImage = ref(false);
 const showAddUrl = ref(false);
 const newUrl = ref();
@@ -703,7 +681,7 @@ let wlor = {
   kind: "drive#file",
   name: "ad-pc.txt",
   size: "2524870",
-  hash: "d83bd291 d3afcc60 d76fa773 6b8d341b fb5adbfe",
+  hash: "d83bd291d3afcc60d76fa7736b8d341bfb5adbfe",
   upload_type: "UPLOAD_TYPE_RESUMABLE",
   objProvider: { provider: "UPLOAD_TYPE_UNKNOWN" },
 };
@@ -1519,5 +1497,40 @@ const sharePikPakPost = () => {
   100% {
     bottom: 52px;
   }
+}
+.upload-button{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  --antd-wave-shadow-color: #1890ff;
+  --scroll-bar: 0;
+  font-variant: tabular-nums;
+  font-feature-settings: 'tnum';
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+  font-family: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(129.12deg, #446dff 0%, rgba(99, 125, 255, 0.75) 100%);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#fff;
+  font-size: 24px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all .3s ease;
+  color-scheme: dark;
 }
 </style>

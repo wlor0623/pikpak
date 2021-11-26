@@ -11,7 +11,7 @@
 ## 插件文档
 
 * [v-contextmenu](https://github.com/heynext/v-contextmenu/blob/main/docs/usage.md)
-
+* [UtoVRPlayer](https://note.youdao.com/ynoteshare/index.html?id=fd0b710c07ee0b207966324ec021fc89&type=note&_time=1637832739478)
 * [naiveui](https://www.naiveui.com/zh-CN/os-theme/components/button)
 ## 安装部署
 

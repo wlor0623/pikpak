@@ -3,7 +3,9 @@
     <div class="content " :class="{hide: hide}">
       <div class="status-bar" @click="hide = !hide">
         <div class="status-bar-wrapper">
-          {{filesList?.length || 0}}项保存中 &nbsp;  <n-spin size="small" v-if="loading"/>
+          <i class="iconfont icon-cloud"></i>
+          &nbsp; 
+          <span>{{filesList?.length || 0}}项保存中</span> &nbsp;  <n-spin size="small" v-if="loading"/>
         </div>
       </div>
       <div class="task-list">

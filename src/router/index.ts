@@ -12,6 +12,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'list',
         component: () => import('../views/list.vue')
       },
+      
       {
         path: 'trash',
         name: 'trash',
@@ -28,6 +29,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/share.vue')
       }
     ]
+  },
+  {
+    path: '/play/:id?',
+    name: 'play',
+    component: () => import('../views/play.vue')
+  },
+  {
+    path: '/play/vr/:id?',
+    name: 'vrplay',
+    component: () => import('../views/vrplay.vue')
   },
   {
     path: '/t/:id?',
@@ -48,6 +59,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/register',
     name: 'register',
     component: () => import('../views/register.vue'),
+  },
+  {
+    path: '/:catchAll(.*)*',
+    redirect: '/list',
   },
 ]
 

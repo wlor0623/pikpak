@@ -3,12 +3,15 @@
     <n-layout-sider :content-style="{display: 'flex', flexDirection: 'column'}" collapse-mode="width" :collapsed-width="0" :width="240" show-trigger="bar" :collapsed="collapsed" @collapse="collapsed = true" @expand="collapsed = false" bordered>
 
       <a href="https://mypikpak.com/" target="_blank" class="logo-box">
-        <img src="https://www.mypikpak.com/logo.png" class="logo-box__icon" alt="">
+        <img src="../../assets/logo.png" class="logo-box__icon" alt="">
         <div class="logo-box__text">PikPak</div>
       </a>
       <n-menu :options="menuOptions" :value="String(route.name)" @update:value="goRoute"></n-menu>
       <div class="content-bottom" v-if="!collapsed">
-        {{byteConvert(aboutInfo?.quota.usage)}} / {{byteConvert(aboutInfo?.quota.limit)}} <n-text type="primary" @click="showCode = true">会员码</n-text>
+        <div class="content-bottom-flex">
+          <span>{{byteConvert(aboutInfo?.quota.usage)}} / {{byteConvert(aboutInfo?.quota.limit)}}</span> <n-text type="primary" @click="showCode = true">会员码</n-text>
+
+        </div>
         <n-progress v-if="aboutInfo?.quota" type="line" :percentage="Number((aboutInfo?.quota.usage / aboutInfo?.quota.limit * 100).toFixed(2))" :indicator-placement="'inside'" :height="14" :color="vipInfo?.status === 'ok' ? '#d1ae6a' : undefined" processing>
         </n-progress>
        
@@ -16,7 +19,7 @@
       <div class="sider-bottom" v-if="!collapsed" :class="{vip: vipInfo?.status === 'ok'}">
         <div class="bottom-user-info">
           <img src="../../assets/logo1.png" class="user-info-avatar" v-if="vipInfo?.status === 'ok'">
-          <img src="https://www.mypikpak.com/logo.png" v-else class="user-info-avatar">
+          <img src="../../assets/logo.png" v-else class="user-info-avatar">
           <div class="user-info-name">
             {{userInfo?.name}}
             <div v-if="vipInfo?.status === 'ok' && vipInfo?.expire">
@@ -231,7 +234,7 @@ a {
   font-family: PingFangSC-Semibold;
   font-size: 20px;
   letter-spacing: -1.25px;
-  color: #000;
+  /* color: #000; */
 }
 .content-bottom {
   width: 192px;
@@ -297,6 +300,11 @@ a {
 
 .list-page {
   padding: 40px;
+}
+.content-bottom-flex{
+  display: flex;
+  align-items: center;
+ justify-content: space-between;
 }
 @media (max-width: 968px) {
   .list-page {
