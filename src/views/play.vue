@@ -106,7 +106,7 @@ onMounted(initPlayer);
   position: absolute;
   bottom: 0;
   right: 310px;
-  z-index: 0;
+  z-index: 999;
   height: 40px;
   line-height: 40px;
   cursor: pointer;
@@ -118,22 +118,5 @@ onMounted(initPlayer);
 #playerView {
   position: relative;
 }
-#playerView:hover .showVR {
-  /* display: block; */
-  animation:test 2s  1s;
-}
-@keyframes test {
-  from {
-    z-index: 998;
-    /* opacity: 0; */
-  }
-  to {
-    z-index: 999;
-    /* opacity: 1; */
-  }
-}
 
-.full-page {
-  height: 100vh;
-}
 </style>
