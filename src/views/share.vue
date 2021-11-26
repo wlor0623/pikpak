@@ -10,10 +10,11 @@
     <br />
     
     <n-scrollbar style="max-height: calc(100vh - 300px);" @scroll="scrollHandle">
-      <n-data-table :bordered="false" size="small" :data="list" :columns="columns"></n-data-table>
       <div class="loading" v-if="loading">
         <n-spin size="small" />加载中
       </div>
+      <n-data-table v-show="!loading" :bordered="false" size="small" :data="list" :columns="columns"></n-data-table>
+     
     </n-scrollbar>
   </div>
 </template>

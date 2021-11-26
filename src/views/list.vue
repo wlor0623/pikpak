@@ -33,10 +33,11 @@
       </div>
     </div>
     <n-scrollbar style="max-height: calc(100vh - 190px);" @scroll="scrollHandle">
-      <n-data-table v-model:checked-row-keys="checkedRowKeys" :row-key="row => row.id" :data="filesList" size="small" :columns="columns" :bordered="false"></n-data-table>
       <div class="loading" v-if="loading">
         <n-spin size="small" />加载中
       </div>
+      <n-data-table v-show="!loading" v-model:checked-row-keys="checkedRowKeys" :row-key="row => row.id" :data="filesList" size="small" :columns="columns" :bordered="false"></n-data-table>
+      
     </n-scrollbar>
     <task-vue ref="taskRef"></task-vue>
     <div class="outer-wrapper static show" v-if="checkedRowKeys.length">
@@ -566,7 +567,8 @@ const getFileList = () => {
     .get("https://api-drive.mypikpak.com/drive/v1/files", {
       params: {
         parent_id: route.params.id,
-        thumbnail_size: "SIZE_LARGE",
+        // thumbnail_size: "SIZE_LARGE",
+        thumbnail_size: "SIZE_SMALL",
         with_audit: true,
         page_token: pageToken.value || undefined,
         filters: {

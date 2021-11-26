@@ -3,11 +3,11 @@
     <!-- <n-page-header subtitle="返回" @back="handleBack">
     
   </n-page-header>   -->
-
-    <div id="playerView">
-      <div class="showVR" @click="playVR">
+  <div class="showVR" @click="playVR">
         <i class="iconfont icon-VRFilled"></i>
       </div>
+    <div id="playerView">
+    
 
     </div>
 
@@ -26,13 +26,15 @@ const route = useRoute();
 const router = useRouter();
 const initPlayer = () => {
   getFile(route.params.id).then((res) => {
+    console.log("视频信息",res.data);
+    
     if (res.data.mime_type.indexOf("video") >= 0) {
       let player = new Player({
         id: "playerView",
         url: res.data.web_content_link,
-        // height: document.documentElement.clientHeight - 100,
+        height: document.documentElement.clientHeight - 100,
         width: "100%",
-        height: "100%",
+        // height: "100%",
         // fluid: true,
         lang: "zh-cn",
         autoplay: false,
@@ -62,14 +64,15 @@ const initPlayer = () => {
         url: [
           {
             src: res.data.web_content_link,
-            name: "song01",
+            name: res.data.name,
             vid: "000001",
+            poster: res.data.icon_link
           },
         ],
         volume: 0.8,
-        width: 900,
+        width: "100%",
         height: 50,
-        preloadNext: true,
+        preloadNext: false,
         switchKeepProgress: false,
         abCycle: {
           start: 3,
